@@ -10,17 +10,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-module "lambda_layer_s3" {
+module "lambda_layer" {
   source = "terraform-aws-modules/lambda/aws"
 
-  create_layer = var.create_layer
+  create_layer    = true
+  create_function = false
 
-  layer_name          = var.name
-  description         = var.description
-  compatible_runtimes = var.compatible_runtimes
-  architectures       = var.compatible_architectures
+  layer_name  = var.name
+  description = var.description
 
-  source_path = var.source_path
+  compatible_runtimes      = var.compatible_runtimes
+  compatible_architectures = var.compatible_architectures
+
+  source_path = var.source_path != null && var.store_on_s3 == false ? "${var.source_path}" : null
 
   store_on_s3 = var.store_on_s3
   s3_bucket   = var.s3_bucket

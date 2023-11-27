@@ -11,9 +11,9 @@
 // limitations under the License.
 
 output "lambda_layer_arn" {
-  value = module.lambda_layer_s3.lambda_layer_arn
+  value = module.lambda_layer.lambda_layer_arn
 }
 
 output "lambda_layer_version" {
-  value = module.lambda_layer_s3.lambda_layer_version
+  value = module.lambda_layer.lambda_layer_version
 }

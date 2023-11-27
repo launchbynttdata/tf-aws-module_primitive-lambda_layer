@@ -119,7 +119,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_lambda_layer_s3"></a> [lambda\_layer\_s3](#module\_lambda\_layer\_s3) | terraform-aws-modules/lambda/aws | n/a |
+| <a name="module_lambda_layer"></a> [lambda\_layer](#module\_lambda\_layer) | terraform-aws-modules/lambda/aws | n/a |
 
 ## Resources
 
