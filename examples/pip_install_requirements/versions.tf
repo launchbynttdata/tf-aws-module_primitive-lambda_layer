@@ -10,21 +10,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-module "lambda_layer" {
-  source  = "terraform-aws-modules/lambda/aws"
-  version = "~> 7.2"
+terraform {
+  required_version = ">= 1.5.0, <= 1.5.5"
 
-  create_layer    = true
-  create_function = false
-
-  layer_name  = var.name
-  description = var.description
-
-  compatible_runtimes      = var.compatible_runtimes
-  compatible_architectures = var.compatible_architectures
-
-  source_path = var.source_path != null && var.store_on_s3 == false ? var.source_path : null
-
-  store_on_s3 = var.store_on_s3
-  s3_bucket   = var.s3_bucket
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 5.14"
+    }
+    null = {
+      source  = "hashicorp/null"
+      version = "~> 3.2"
+    }
+    archive = {
+      source  = "hashicorp/archive"
+      version = "~> 2.4"
+    }
+  }
 }

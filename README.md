@@ -108,7 +108,7 @@ If `make check` target is successful, developer is good to commit the code to pr
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.5 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.0, <= 1.5.5 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.14 |
 
 ## Providers
@@ -119,7 +119,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_lambda_layer"></a> [lambda\_layer](#module\_lambda\_layer) | terraform-aws-modules/lambda/aws | n/a |
+| <a name="module_lambda_layer"></a> [lambda\_layer](#module\_lambda\_layer) | terraform-aws-modules/lambda/aws | ~> 7.2 |
 
 ## Resources
 
@@ -129,7 +129,6 @@ No resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_create_layer"></a> [create\_layer](#input\_create\_layer) | Controls whether Lambda Layer resource should be created, default true | `bool` | `true` | no |
 | <a name="input_name"></a> [name](#input\_name) | (Required) Name Lambda Layer | `string` | n/a | yes |
 | <a name="input_description"></a> [description](#input\_description) | (Optional) Description of the Lambda Layer | `string` | `""` | no |
 | <a name="input_compatible_runtimes"></a> [compatible\_runtimes](#input\_compatible\_runtimes) | (Required) A list of Runtimes this layer is compatible with. Specify a maximum of 5 runtimes. | `list(string)` | n/a | yes |

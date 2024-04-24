@@ -1,0 +1,59 @@
+# complete
+
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.0, <= 1.5.5 |
+| <a name="requirement_archive"></a> [archive](#requirement\_archive) | ~> 2.4 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.14 |
+| <a name="requirement_null"></a> [null](#requirement\_null) | ~> 3.2 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_terraform"></a> [terraform](#provider\_terraform) | n/a |
+| <a name="provider_null"></a> [null](#provider\_null) | 3.2.2 |
+| <a name="provider_archive"></a> [archive](#provider\_archive) | 2.4.2 |
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_layer"></a> [layer](#module\_layer) | d2lqlh14iel5k2.cloudfront.net/module_primitive/lambda_layer/aws | ~> 1.0 |
+| <a name="module_resource_names"></a> [resource\_names](#module\_resource\_names) | d2lqlh14iel5k2.cloudfront.net/module_library/resource_name/launch | ~> 1.0 |
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [null_resource.layer_folder_generation](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [terraform_data.requirements_txt_md5sum](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
+| [archive_file.layer_zip](https://registry.terraform.io/providers/hashicorp/archive/latest/docs/data-sources/file) | data source |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_description"></a> [description](#input\_description) | (Optional) Description of the Lambda Layer | `string` | `""` | no |
+| <a name="input_compatible_runtimes"></a> [compatible\_runtimes](#input\_compatible\_runtimes) | (Required) A list of Runtimes this layer is compatible with. Specify a maximum of 5 runtimes. | `list(string)` | n/a | yes |
+| <a name="input_compatible_architectures"></a> [compatible\_architectures](#input\_compatible\_architectures) | (Optional) Architectures that this layer is compatible with. Currently only x86\_64 and arm64 are supported. | `list(string)` | `[]` | no |
+| <a name="input_store_on_s3"></a> [store\_on\_s3](#input\_store\_on\_s3) | (Optional) Whether to store produced artifacts on S3 or locally. Defaults to false (local). | `bool` | `false` | no |
+| <a name="input_s3_bucket"></a> [s3\_bucket](#input\_s3\_bucket) | S3 bucket to store artifacts. Required only when store\_on\_s3 is set to true. | `string` | `null` | no |
+| <a name="input_resource_names_map"></a> [resource\_names\_map](#input\_resource\_names\_map) | A map of key to resource\_name that will be used by tf-launch-module\_library-resource\_name to generate resource names | <pre>map(object({<br>    name       = string<br>    max_length = optional(number, 60)<br>    region     = optional(string, "us-east-2")<br>  }))</pre> | <pre>{<br>  "layer": {<br>    "max_length": 80,<br>    "name": "lyr"<br>  }<br>}</pre> | no |
+| <a name="input_instance_env"></a> [instance\_env](#input\_instance\_env) | Number that represents the instance of the environment. | `number` | `0` | no |
+| <a name="input_instance_resource"></a> [instance\_resource](#input\_instance\_resource) | Number that represents the instance of the resource. | `number` | `0` | no |
+| <a name="input_logical_product_family"></a> [logical\_product\_family](#input\_logical\_product\_family) | (Required) Name of the product family for which the resource is created.<br>    Example: org\_name, department\_name. | `string` | `"launch"` | no |
+| <a name="input_logical_product_service"></a> [logical\_product\_service](#input\_logical\_product\_service) | (Required) Name of the product service for which the resource is created.<br>    For example, backend, frontend, middleware etc. | `string` | `"layer"` | no |
+| <a name="input_class_env"></a> [class\_env](#input\_class\_env) | (Required) Environment where resource is going to be deployed. For example. dev, qa, uat | `string` | `"demo"` | no |
+| <a name="input_requirements_txt_location"></a> [requirements\_txt\_location](#input\_requirements\_txt\_location) | Path to the requirements.txt file to be turned into a Lambda Layer. | `string` | n/a | yes |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_lambda_layer_arn"></a> [lambda\_layer\_arn](#output\_lambda\_layer\_arn) | n/a |
+| <a name="output_lambda_layer_version"></a> [lambda\_layer\_version](#output\_lambda\_layer\_version) | n/a |
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

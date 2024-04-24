@@ -10,12 +10,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-variable "create_layer" {
-  description = "Controls whether Lambda Layer resource should be created, default true"
-  type        = bool
-  default     = true
-}
-
 variable "name" {
   description = "(Required) Name Lambda Layer"
   type        = string

@@ -63,3 +63,10 @@ azure_env.sh
 
 # VS Code
 .vscode/
+
+# Layer build files
+**/build/
+**/builds/
+**/lambda_layer
+**/lambda_layer.zip
+**/*.egg-info

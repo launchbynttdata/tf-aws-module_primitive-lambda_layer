@@ -10,23 +10,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-resource "random_string" "suffix" {
-  length  = var.length
-  special = false
-}
+terraform {
+  required_version = ">= 1.5.0, <= 1.5.5"
 
-module "layer" {
-  source = "../.."
-
-  create_layer = var.create_layer
-
-  name                     = local.randomized_name
-  description              = var.description
-  compatible_runtimes      = var.compatible_runtimes
-  compatible_architectures = var.compatible_architectures
-
-  source_path = var.source_path
-
-  store_on_s3 = var.store_on_s3
-  s3_bucket   = var.s3_bucket
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 5.14"
+    }
+    archive = {
+      source  = "hashicorp/archive"
+      version = "~> 2.4"
+    }
+  }
 }
