@@ -16,8 +16,8 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_layer"></a> [layer](#module\_layer) | d2lqlh14iel5k2.cloudfront.net/module_primitive/lambda_layer/aws | ~> 1.0 |
-| <a name="module_resource_names"></a> [resource\_names](#module\_resource\_names) | d2lqlh14iel5k2.cloudfront.net/module_library/resource_name/launch | ~> 1.0 |
+| <a name="module_layer"></a> [layer](#module\_layer) | terraform.registry.launch.nttdata.com/module_primitive/lambda_layer/aws | ~> 1.0 |
+| <a name="module_resource_names"></a> [resource\_names](#module\_resource\_names) | terraform.registry.launch.nttdata.com/module_library/resource_name/launch | ~> 1.0 |
 
 ## Resources
 
