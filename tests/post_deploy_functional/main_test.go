@@ -31,6 +31,14 @@ func TestLambdaLayerModule(t *testing.T) {
 		SetTestConfig(&testimpl.ThisTFModuleConfig{}).
 		SetTestConfigFolderName(testConfigsExamplesFolderDefault).
 		SetTestConfigFileName(infraTFVarFileNameDefault).
+		SetTestSpecificFlags(map[string]types.TestFlags{
+			"pip_install_pyproject": {
+				"IS_TERRAFORM_IDEMPOTENT_APPLY": false,
+			},
+			"pip_install_requirements": {
+				"IS_TERRAFORM_IDEMPOTENT_APPLY": false,
+			},
+		}).
 		Build()
 
 	lib.RunSetupTestTeardown(t, *ctx, testimpl.TestComposableComplete)
