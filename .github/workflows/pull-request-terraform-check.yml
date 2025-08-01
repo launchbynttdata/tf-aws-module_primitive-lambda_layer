@@ -15,7 +15,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    uses: launchbynttdata/launch-workflows/.github/workflows/reusable-terraform-check-aws.yml@0.6.0
+    uses: launchbynttdata/launch-workflows/.github/workflows/reusable-terraform-check-aws.yml@fix/generic-terraform-aws-profile-fixup
     with:
       assume_role_arn: ${{ vars.TERRAFORM_CHECK_AWS_ASSUME_ROLE_ARN }}
       region: ${{ vars.TERRAFORM_CHECK_AWS_REGION }}
