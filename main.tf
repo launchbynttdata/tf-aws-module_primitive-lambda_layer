@@ -12,7 +12,7 @@
 
 module "lambda_layer" {
   source  = "terraform-aws-modules/lambda/aws"
-  version = "~> 7.2"
+  version = "~> 8.0"
 
   create_layer    = true
   create_function = false
