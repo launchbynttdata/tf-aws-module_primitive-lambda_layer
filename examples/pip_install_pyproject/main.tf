@@ -10,39 +10,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-module "layer" {
-  source  = "terraform.registry.launch.nttdata.com/module_primitive/lambda_layer/aws"
-  version = "~> 1.0"
-
-  name                     = module.resource_names["layer"].minimal_random_suffix
-  description              = var.description
-  compatible_runtimes      = var.compatible_runtimes
-  compatible_architectures = var.compatible_architectures
-
-  source_path = "lambda_layer.zip"
-
-  store_on_s3 = var.store_on_s3
-  s3_bucket   = var.s3_bucket
-
-  depends_on = [data.archive_file.layer_zip]
-}
-
-module "resource_names" {
-  source  = "terraform.registry.launch.nttdata.com/module_library/resource_name/launch"
-  version = "~> 1.0"
-
-  for_each = var.resource_names_map
-
-  region                  = join("", split("-", each.value.region))
-  class_env               = var.class_env
-  cloud_resource_type     = each.value.name
-  instance_env            = var.instance_env
-  instance_resource       = var.instance_resource
-  maximum_length          = each.value.max_length
-  logical_product_family  = var.logical_product_family
-  logical_product_service = var.logical_product_service
-}
-
 resource "terraform_data" "pyproject_toml_md5sum" {
   input = filemd5("${replace(var.pyproject_path, "/\\[.+\\]/", "")}/pyproject.toml")
 }
@@ -66,4 +33,37 @@ data "archive_file" "layer_zip" {
   output_path = "lambda_layer.zip"
 
   depends_on = [null_resource.layer_folder_generation]
+}
+
+module "layer" {
+  source = "../.."
+
+  name                     = module.resource_names["layer"][var.resource_names_strategy]
+  description              = var.description
+  compatible_runtimes      = var.compatible_runtimes
+  compatible_architectures = var.compatible_architectures
+
+  source_path = "lambda_layer.zip"
+
+  store_on_s3 = var.store_on_s3
+  s3_bucket   = var.s3_bucket
+
+  depends_on = [data.archive_file.layer_zip]
+  tags       = var.tags
+}
+
+module "resource_names" {
+  source  = "terraform.registry.launch.nttdata.com/module_library/resource_name/launch"
+  version = "~> 2.0"
+
+  for_each = var.resource_names_map
+
+  region                  = join("", split("-", each.value.region))
+  class_env               = var.class_env
+  cloud_resource_type     = each.value.name
+  instance_env            = var.instance_env
+  instance_resource       = var.instance_resource
+  maximum_length          = each.value.max_length
+  logical_product_family  = var.logical_product_family
+  logical_product_service = var.logical_product_service
 }

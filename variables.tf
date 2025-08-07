@@ -48,3 +48,9 @@ variable "s3_bucket" {
   type        = string
   default     = null
 }
+
+variable "tags" {
+  description = "Map of tags to apply to this resource."
+  type        = map(string)
+  default     = {}
+}

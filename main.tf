@@ -27,4 +27,5 @@ module "lambda_layer" {
 
   store_on_s3 = var.store_on_s3
   s3_bucket   = var.s3_bucket
+  tags        = local.tags
 }

@@ -11,10 +11,9 @@
 // limitations under the License.
 
 module "layer" {
-  source  = "terraform.registry.launch.nttdata.com/module_primitive/lambda_layer/aws"
-  version = "~> 1.0"
+  source = "../.."
 
-  name                     = module.resource_names["layer"].minimal_random_suffix
+  name                     = module.resource_names["layer"][var.resource_names_strategy]
   description              = var.description
   compatible_runtimes      = var.compatible_runtimes
   compatible_architectures = var.compatible_architectures
@@ -23,11 +22,12 @@ module "layer" {
 
   store_on_s3 = var.store_on_s3
   s3_bucket   = var.s3_bucket
+  tags        = var.tags
 }
 
 module "resource_names" {
   source  = "terraform.registry.launch.nttdata.com/module_library/resource_name/launch"
-  version = "~> 1.0"
+  version = "~> 2.0"
 
   for_each = var.resource_names_map
 

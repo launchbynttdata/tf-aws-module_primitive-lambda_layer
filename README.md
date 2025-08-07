@@ -103,13 +103,13 @@ If `make check` target is successful, developer is good to commit the code to pr
 - runs `conftests`. `conftests` make sure `policy` checks are successful.
 - runs `terratest`. This is integration test suit.
 - runs `opa` tests
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.0, <= 1.5.5 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.14 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 5.0 |
 
 ## Providers
 
@@ -136,6 +136,7 @@ No resources.
 | <a name="input_source_path"></a> [source\_path](#input\_source\_path) | (Required) The absolute path to a local file or directory containing your Lambda source code | `string` | n/a | yes |
 | <a name="input_store_on_s3"></a> [store\_on\_s3](#input\_store\_on\_s3) | (Optional) Whether to store produced artifacts on S3 or locally. Defaults to false (local). | `bool` | `false` | no |
 | <a name="input_s3_bucket"></a> [s3\_bucket](#input\_s3\_bucket) | S3 bucket to store artifacts. Required only when store\_on\_s3 is set to true. | `string` | `null` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | Map of tags to apply to this resource. | `map(string)` | `{}` | no |
 
 ## Outputs
 
@@ -143,4 +144,4 @@ No resources.
 |------|-------------|
 | <a name="output_lambda_layer_arn"></a> [lambda\_layer\_arn](#output\_lambda\_layer\_arn) | n/a |
 | <a name="output_lambda_layer_version"></a> [lambda\_layer\_version](#output\_lambda\_layer\_version) | n/a |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->

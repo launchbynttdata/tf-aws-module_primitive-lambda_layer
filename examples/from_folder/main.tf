@@ -10,11 +10,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-module "layer" {
-  source  = "terraform.registry.launch.nttdata.com/module_primitive/lambda_layer/aws"
-  version = "~> 1.0"
+data "archive_file" "layer_zip" {
+  type        = "zip"
+  source_dir  = var.source_path
+  output_path = "lambda_layer.zip"
+}
 
-  name                     = module.resource_names["layer"].minimal_random_suffix
+module "layer" {
+  source = "../.."
+
+  name                     = module.resource_names["layer"][var.resource_names_strategy]
   description              = var.description
   compatible_runtimes      = var.compatible_runtimes
   compatible_architectures = var.compatible_architectures
@@ -25,11 +30,12 @@ module "layer" {
   s3_bucket   = var.s3_bucket
 
   depends_on = [data.archive_file.layer_zip]
+  tags       = var.tags
 }
 
 module "resource_names" {
   source  = "terraform.registry.launch.nttdata.com/module_library/resource_name/launch"
-  version = "~> 1.0"
+  version = "~> 2.0"
 
   for_each = var.resource_names_map
 
@@ -41,10 +47,4 @@ module "resource_names" {
   maximum_length          = each.value.max_length
   logical_product_family  = var.logical_product_family
   logical_product_service = var.logical_product_service
-}
-
-data "archive_file" "layer_zip" {
-  type        = "zip"
-  source_dir  = var.source_path
-  output_path = "lambda_layer.zip"
 }
