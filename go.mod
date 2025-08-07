@@ -8,7 +8,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/lambda v1.54.0
 	github.com/gruntwork-io/terratest v0.46.14
 	github.com/launchbynttdata/lcaf-component-terratest v1.0.4
-	github.com/stretchr/testify v1.9.0
+	github.com/stretchr/testify v1.10.0
 )
 
 require (
