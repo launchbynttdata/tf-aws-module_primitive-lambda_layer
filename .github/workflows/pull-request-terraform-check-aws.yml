@@ -1,22 +1,18 @@
-name: Check AWS Terraform Code
+name: "Check Terraform"
 
 on:
   pull_request:
     types: [opened, reopened, synchronize, ready_for_review]
     branches: [main]
 
-permissions:
-  id-token: write
-  contents: read
-
 jobs:
   check:
-    name: "Check AWS Terraform Code"
+    name: "Reusable Workflow"
     permissions:
       contents: read
       id-token: write
-    uses: launchbynttdata/launch-workflows/.github/workflows/reusable-terraform-check-aws.yml@0.14.2
+      statuses: write
+    uses: launchbynttdata/launch-workflows/.github/workflows/reusable-terraform-check.yml@feat/unify-provider-auth
     with:
-      assume_role_arn: ${{ vars.TERRAFORM_CHECK_AWS_ASSUME_ROLE_ARN }}
-      region: ${{ vars.TERRAFORM_CHECK_AWS_REGION }}
+      auth_method: ${{ startsWith(github.event.repository.name, 'tf-aws') && 'aws' || startsWith(github.event.repository.name, 'tf-az') && 'azure' || 'none' }}
     secrets: inherit # pragma: allowlist secret
