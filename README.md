@@ -125,13 +125,13 @@ No resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_name"></a> [name](#input\_name) | (Required) Name Lambda Layer | `string` | n/a | yes |
-| <a name="input_description"></a> [description](#input\_description) | (Optional) Description of the Lambda Layer | `string` | `""` | no |
-| <a name="input_compatible_runtimes"></a> [compatible\_runtimes](#input\_compatible\_runtimes) | (Required) A list of Runtimes this layer is compatible with. Specify a maximum of 5 runtimes. | `list(string)` | n/a | yes |
 | <a name="input_compatible_architectures"></a> [compatible\_architectures](#input\_compatible\_architectures) | (Optional) Architectures that this layer is compatible with. Currently only x86\_64 and arm64 are supported. | `list(string)` | `[]` | no |
+| <a name="input_compatible_runtimes"></a> [compatible\_runtimes](#input\_compatible\_runtimes) | (Required) A list of Runtimes this layer is compatible with. Specify a maximum of 5 runtimes. | `list(string)` | n/a | yes |
+| <a name="input_description"></a> [description](#input\_description) | (Optional) Description of the Lambda Layer | `string` | `""` | no |
+| <a name="input_name"></a> [name](#input\_name) | (Required) Name Lambda Layer | `string` | n/a | yes |
+| <a name="input_s3_bucket"></a> [s3\_bucket](#input\_s3\_bucket) | S3 bucket to store artifacts. Required only when store\_on\_s3 is set to true. | `string` | `null` | no |
 | <a name="input_source_path"></a> [source\_path](#input\_source\_path) | (Required) The absolute path to a local file or directory containing your Lambda source code | `string` | n/a | yes |
 | <a name="input_store_on_s3"></a> [store\_on\_s3](#input\_store\_on\_s3) | (Optional) Whether to store produced artifacts on S3 or locally. Defaults to false (local). | `bool` | `false` | no |
-| <a name="input_s3_bucket"></a> [s3\_bucket](#input\_s3\_bucket) | S3 bucket to store artifacts. Required only when store\_on\_s3 is set to true. | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Map of tags to apply to this resource. | `map(string)` | `{}` | no |
 
 ## Outputs
