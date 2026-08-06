@@ -17,8 +17,8 @@ import (
 func TestComposableComplete(t *testing.T, ctx types.TestContext) {
 	lambdaClient := GetAWSLambdaClient(t)
 
-	layerArn := terraform.Output(t, ctx.TerratestTerraformOptions(), "lambda_layer_arn")
-	layerVersion := terraform.Output(t, ctx.TerratestTerraformOptions(), "lambda_layer_version")
+	layerArn := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "lambda_layer_arn")
+	layerVersion := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "lambda_layer_version")
 
 	t.Run("TestLambdaLayerExists", func(t *testing.T) {
 		layer, err := lambdaClient.GetLayerVersionByArn(context.TODO(), &lambda.GetLayerVersionByArnInput{
