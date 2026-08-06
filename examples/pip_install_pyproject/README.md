@@ -12,14 +12,6 @@ Example to demonstrate construction of a Lambda Layer from dependencies expresse
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 5.0 |
 | <a name="requirement_null"></a> [null](#requirement\_null) | ~> 3.2 |
 
-## Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_archive"></a> [archive](#provider\_archive) | 2.8.0 |
-| <a name="provider_null"></a> [null](#provider\_null) | 3.3.0 |
-| <a name="provider_terraform"></a> [terraform](#provider\_terraform) | n/a |
-
 ## Modules
 
 | Name | Source | Version |
